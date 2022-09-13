@@ -16,11 +16,9 @@ export function VotingTool({
 }: IVotingTool): JSX.Element {
   const [dogOne, setDogOne] = useState<IImageAndBreed | null>(null);
   const [dogTwo, setDogTwo] = useState<IImageAndBreed | null>(null);
-  const [theChosenOne, setTheChosenOne] = useState<string | null>(null);
   const handleVoteClick = async (chosenBreed: string) => {
-    setTheChosenOne(chosenBreed);
     setVotesRegistered(votesRegistered + 1);
-    await axios.post(dataBaseURL + "/", { upvotedDog: theChosenOne });
+    await axios.post(dataBaseURL + "/", { upvotedDog: chosenBreed });
   };
   useEffect(() => {
     const getImages = async () => {
@@ -36,20 +34,26 @@ export function VotingTool({
   }, [votesRegistered]); // potentially add variable to dependency array for when someone casts a vote, so that they get new dogs to vote on
   return (
     <>
-      <div className="imgContainer">
+      <div className="voteImgContainer">
         {dogOne !== null && (
-          <img
-            onClick={() => handleVoteClick(dogOne.breed)}
-            src={dogOne.imageURL}
-            alt={dogOne.breed}
-          />
+          <div className="singleVoteImg">
+            <img
+              onClick={() => handleVoteClick(dogOne.breed)}
+              src={dogOne.imageURL}
+              alt={dogOne.breed}
+            />
+            <p>{dogOne.breed}</p>
+          </div>
         )}
         {dogTwo !== null && (
-          <img
-            onClick={() => handleVoteClick(dogTwo.breed)}
-            src={dogTwo.imageURL}
-            alt={dogTwo.breed}
-          />
+          <div className="singleVoteImg">
+            <img
+              onClick={() => handleVoteClick(dogTwo.breed)}
+              src={dogTwo.imageURL}
+              alt={dogTwo.breed}
+            />
+            <p>{dogTwo.breed}</p>
+          </div>
         )}
       </div>
     </>
