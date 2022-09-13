@@ -1,0 +1,10 @@
+img {
+  width: 20%;
+  height: 20%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+img:hover {
+  opacity: 0.3;
+}
