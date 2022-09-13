@@ -19,8 +19,8 @@ export function VotingTool(): JSX.Element {
   }, []); // potentially add variable to dependency array for when someone casts a vote, so that they get new dogs to vote on
   return (
     <>
-      <h1>{dogOne}</h1>
-      <h1>{dogTwo}</h1>
+      {dogOne !== null && <img src={dogOne.imageURL} alt={dogOne.breed} />}
+      {dogTwo !== null && <img src={dogTwo.imageURL} alt={dogTwo.breed} />}
     </>
   );
 }
