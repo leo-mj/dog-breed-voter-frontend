@@ -1,4 +1,5 @@
 import { VotingTool } from "./components/VotingTool";
+
 function App(): JSX.Element {
   return (
     <>
