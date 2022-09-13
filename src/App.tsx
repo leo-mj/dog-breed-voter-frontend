@@ -10,7 +10,7 @@ function App(): JSX.Element {
         votesRegistered={votesRegistered}
         setVotesRegistered={setVotesRegistered}
       />
-      <TopTen />
+      <TopTen votesRegistered={votesRegistered} />
       <footer>
         <a href="https://dog.ceo/dog-api/">Thanks to Dog API </a>
       </footer>
