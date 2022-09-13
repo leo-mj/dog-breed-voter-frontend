@@ -4,17 +4,22 @@ import axios from "axios";
 import { IDataTopTen } from "../utils/interfaces";
 import { Table } from "react-bootstrap";
 
-export function TopTen(): JSX.Element {
+interface ITopTenProps {
+  votesRegistered: number;
+}
+
+export function TopTen({ votesRegistered }: ITopTenProps): JSX.Element {
   const [topTenBoard, setTopTenBoard] = useState<IDataTopTen[]>([]);
   useEffect(() => {
     const getTopTen = async () => {
       const res = await axios.get(`${dataBaseURL}/topTen`);
+      console.log(dataBaseURL, "getting Top Ten");
       const dataTopTen: IDataTopTen[] = res.data;
       setTopTenBoard(dataTopTen);
     };
 
     getTopTen();
-  }, []);
+  }, [votesRegistered]);
 
   return (
     <>
