@@ -1,0 +1,64 @@
+body {
+  margin: 10px;
+  height: 100vh;
+  grid-template-areas:
+    "top"
+    "bottom";
+}
+
+.home-page {
+  grid-area: top;
+  display: grid;
+  /* grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr; */
+  grid-template-areas: "a a a b";
+}
+
+#voting-tool {
+  grid-area: a;
+  align-self: center;
+  justify-self: center;
+}
+
+#top-ten {
+  grid-area: b;
+}
+
+img {
+  width: 500px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+img:hover {
+  opacity: 0.3;
+}
+
+.voteImgContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.singleVoteImg {
+  padding: 40px;
+}
+
+.singleVoteImg p {
+  text-align: center;
+}
+
+h1 {
+  font-size: 14px;
+  padding: 10px;
+  text-align: center;
+}
+
+.leaderboard {
+  margin-right: 50px;
+}
+
+footer {
+  grid-area: bottom;
+  align-self: end;
+}

@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { dataBaseURL } from "../utils/dbURL";
+import { formatName } from "../utils/formatName";
 import { getImageAndBreed } from "../utils/getImageAndBreed";
 import { IImageAndBreed } from "../utils/interfaces";
-import "./votingTool.css";
+import "../app.css";
 
 interface IVotingTool {
   votesRegistered: number;
@@ -17,8 +18,8 @@ export function VotingTool({
   const [dogOne, setDogOne] = useState<IImageAndBreed | null>(null);
   const [dogTwo, setDogTwo] = useState<IImageAndBreed | null>(null);
   const handleVoteClick = async (chosenBreed: string) => {
-    setVotesRegistered(votesRegistered + 1);
     await axios.post(dataBaseURL + "/", { upvotedDog: chosenBreed });
+    setVotesRegistered(votesRegistered + 1);
   };
   useEffect(() => {
     const getImages = async () => {
@@ -42,7 +43,7 @@ export function VotingTool({
               src={dogOne.imageURL}
               alt={dogOne.breed}
             />
-            <p>{dogOne.breed}</p>
+            <p>{formatName(dogOne.breed)}</p>
           </div>
         )}
         {dogTwo !== null && (
@@ -52,7 +53,7 @@ export function VotingTool({
               src={dogTwo.imageURL}
               alt={dogTwo.breed}
             />
-            <p>{dogTwo.breed}</p>
+            <p>{formatName(dogTwo.breed)}</p>
           </div>
         )}
       </div>

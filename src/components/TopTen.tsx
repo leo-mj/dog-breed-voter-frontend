@@ -3,6 +3,8 @@ import { dataBaseURL } from "../utils/dbURL";
 import axios from "axios";
 import { IDataTopTen } from "../utils/interfaces";
 import { Table } from "react-bootstrap";
+import { formatName } from "../utils/formatName";
+import "../app.css";
 
 interface ITopTenProps {
   votesRegistered: number;
@@ -22,9 +24,9 @@ export function TopTen({ votesRegistered }: ITopTenProps): JSX.Element {
   }, [votesRegistered]);
 
   return (
-    <>
-      <h1>Top Ten dogs go here</h1>
-      <Table striped bordered hover>
+    <div className="leaderboard">
+      <h1>Leaderboard</h1>
+      <Table striped bordered hover className="leaderboard-table">
         <thead>
           <tr>
             <th>#</th>
@@ -37,13 +39,13 @@ export function TopTen({ votesRegistered }: ITopTenProps): JSX.Element {
             return (
               <tr key={breed.breed_id}>
                 <td> {index + 1} </td>
-                <td> {breed.dog_breed} </td>
+                <td> {formatName(breed.dog_breed)} </td>
                 <td> {breed.votes} </td>
               </tr>
             );
           })}
         </tbody>
       </Table>
-    </>
+    </div>
   );
 }
