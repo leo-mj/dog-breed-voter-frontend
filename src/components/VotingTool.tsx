@@ -4,7 +4,7 @@ import { dataBaseURL } from "../utils/dbURL";
 import { formatName } from "../utils/formatName";
 import { getImageAndBreed } from "../utils/getImageAndBreed";
 import { IImageAndBreed } from "../utils/interfaces";
-import "./votingTool.css";
+import "../app.css";
 
 interface IVotingTool {
   votesRegistered: number;

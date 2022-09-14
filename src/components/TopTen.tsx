@@ -4,6 +4,7 @@ import axios from "axios";
 import { IDataTopTen } from "../utils/interfaces";
 import { Table } from "react-bootstrap";
 import { formatName } from "../utils/formatName";
+import "../app.css";
 
 interface ITopTenProps {
   votesRegistered: number;
@@ -23,9 +24,9 @@ export function TopTen({ votesRegistered }: ITopTenProps): JSX.Element {
   }, [votesRegistered]);
 
   return (
-    <>
-      <h1>Top Ten dogs go here</h1>
-      <Table striped bordered hover>
+    <div className="leaderboard">
+      <h1>Leaderboard</h1>
+      <Table striped bordered hover className="leaderboard-table">
         <thead>
           <tr>
             <th>#</th>
@@ -45,6 +46,6 @@ export function TopTen({ votesRegistered }: ITopTenProps): JSX.Element {
           })}
         </tbody>
       </Table>
-    </>
+    </div>
   );
 }

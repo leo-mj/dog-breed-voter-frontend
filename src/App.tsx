@@ -6,11 +6,17 @@ function App(): JSX.Element {
   const [votesRegistered, setVotesRegistered] = useState<number>(0);
   return (
     <>
-      <VotingTool
-        votesRegistered={votesRegistered}
-        setVotesRegistered={setVotesRegistered}
-      />
-      <TopTen votesRegistered={votesRegistered} />
+      <div className="home-page">
+        <div id="voting-tool">
+          <VotingTool
+            votesRegistered={votesRegistered}
+            setVotesRegistered={setVotesRegistered}
+          />
+        </div>
+        <div id="top-ten">
+          <TopTen votesRegistered={votesRegistered} />
+        </div>
+      </div>
       <footer>
         <a href="https://dog.ceo/dog-api/">Thanks to Dog API </a>
       </footer>
