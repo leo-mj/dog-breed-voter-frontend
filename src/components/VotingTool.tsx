@@ -5,6 +5,7 @@ import { formatName } from "../utils/formatName";
 import { getImageAndBreed } from "../utils/getImageAndBreed";
 import { IImageAndBreed } from "../utils/interfaces";
 import "../app.css";
+import { Col } from "react-bootstrap";
 
 interface IVotingTool {
   votesRegistered: number;
@@ -35,9 +36,10 @@ export function VotingTool({
   }, [votesRegistered]); // potentially add variable to dependency array for when someone casts a vote, so that they get new dogs to vote on
   return (
     <>
-      <div className="voteImgContainer">
+      <Col>
         {dogOne !== null && (
           <div className="singleVoteImg">
+            <h1>Choose me! I am the cutest!</h1>
             <img
               onClick={() => handleVoteClick(dogOne.breed)}
               src={dogOne.imageURL}
@@ -46,8 +48,11 @@ export function VotingTool({
             <p>{formatName(dogOne.breed)}</p>
           </div>
         )}
+      </Col>
+      <Col>
         {dogTwo !== null && (
           <div className="singleVoteImg">
+            <h1>No!! Choose me, I'm cuter</h1>
             <img
               onClick={() => handleVoteClick(dogTwo.breed)}
               src={dogTwo.imageURL}
@@ -56,7 +61,7 @@ export function VotingTool({
             <p>{formatName(dogTwo.breed)}</p>
           </div>
         )}
-      </div>
+      </Col>
     </>
   );
 }
