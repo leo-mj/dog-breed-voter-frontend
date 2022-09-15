@@ -8,7 +8,6 @@ function App(): JSX.Element {
   return (
     <Container fluid>
       <Row className="home-page align-items-center">
-        {/* <Row id="voting-tool"> */}
         <VotingTool
           votesRegistered={votesRegistered}
           setVotesRegistered={setVotesRegistered}
@@ -16,7 +15,6 @@ function App(): JSX.Element {
         <Col>
           <TopTen />
         </Col>
-        {/* </Row> */}
       </Row>
       <footer>
         <a href="https://dog.ceo/dog-api/">Thanks to Dog API </a>

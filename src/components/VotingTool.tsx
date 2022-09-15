@@ -3,19 +3,14 @@ import { useEffect, useState } from "react";
 import { dataBaseURL } from "../utils/dbURL";
 import { formatName } from "../utils/formatName";
 import { getImageAndBreed } from "../utils/getImageAndBreed";
-import { IImageAndBreed } from "../utils/interfaces";
+import { IImageAndBreed, IVotingToolProps } from "../utils/interfaces";
 import "../app.css";
 import { Col } from "react-bootstrap";
-
-interface IVotingTool {
-  votesRegistered: number;
-  setVotesRegistered: React.Dispatch<React.SetStateAction<number>>;
-}
 
 export function VotingTool({
   votesRegistered,
   setVotesRegistered,
-}: IVotingTool): JSX.Element {
+}: IVotingToolProps): JSX.Element {
   const [dogOne, setDogOne] = useState<IImageAndBreed | null>(null);
   const [dogTwo, setDogTwo] = useState<IImageAndBreed | null>(null);
   const handleVoteClick = async (chosenBreed: string) => {
@@ -33,7 +28,7 @@ export function VotingTool({
       setDogTwo(secondDog);
     };
     getImages();
-  }, [votesRegistered]); // potentially add variable to dependency array for when someone casts a vote, so that they get new dogs to vote on
+  }, [votesRegistered]);
   return (
     <>
       <Col>
@@ -52,7 +47,7 @@ export function VotingTool({
       <Col>
         {dogTwo !== null && (
           <div className="singleVoteImg">
-            <h1>No!! Choose me, I'm cuter</h1>
+            <h1>No!! Choose me, I'm cuter!</h1>
             <img
               onClick={() => handleVoteClick(dogTwo.breed)}
               src={dogTwo.imageURL}

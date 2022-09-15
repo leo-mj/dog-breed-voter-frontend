@@ -6,6 +6,6 @@ export async function getImageAndBreed(): Promise<IImageAndBreed> {
   const imageURL = res.data.message;
   const splitURL = imageURL.split("/");
   const breedIndex = splitURL.indexOf("breeds") + 1;
-  const breed = splitURL[breedIndex]; // Might want to capitalise first letter
+  const breed = splitURL[breedIndex];
   return { imageURL: imageURL, breed: breed };
 }

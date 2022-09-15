@@ -1,5 +1,4 @@
 body {
-  /* margin: 10px; */
   height: 100vh;
   grid-template-areas:
     "top"
@@ -9,8 +8,6 @@ body {
 .home-page {
   grid-area: top;
   display: grid;
-  /* grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr; */
   grid-template-areas: "a a a b";
 }
 
@@ -53,10 +50,6 @@ h1 {
   padding: 10px;
   text-align: center;
 }
-
-/* .leaderboard {
-  margin-right: 50px;
-} */
 
 footer {
   grid-area: bottom;

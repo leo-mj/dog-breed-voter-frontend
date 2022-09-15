@@ -13,3 +13,8 @@ export interface IDataTopTen {
   dog_breed: string;
   votes: number;
 }
+
+export interface IVotingToolProps {
+  votesRegistered: number;
+  setVotesRegistered: React.Dispatch<React.SetStateAction<number>>;
+}

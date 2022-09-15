@@ -19,12 +19,13 @@ export function TopTen(): JSX.Element {
       setTopTenBoard(dataTopTen);
     };
     getTopTen();
-    socket.on("messageTosend", (data) => {
-      const x: IDataTopTen[] = data;
-      setTopTenBoard(x);
+
+    socket.on("Update top ten", (socketData) => {
+      const topTenViaSocket: IDataTopTen[] = socketData;
+      setTopTenBoard(topTenViaSocket);
     });
     return () => {
-      socket.off("messageTosend");
+      socket.off("Update top ten");
     };
   }, []);
 
@@ -40,12 +41,12 @@ export function TopTen(): JSX.Element {
           </tr>
         </thead>
         <tbody>
-          {topTenBoard.map((breed, index) => {
+          {topTenBoard.map((dog, index) => {
             return (
-              <tr key={breed.breed_id}>
+              <tr key={dog.breed_id}>
                 <td> {index + 1} </td>
-                <td> {formatName(breed.dog_breed)} </td>
-                <td> {breed.votes} </td>
+                <td> {formatName(dog.dog_breed)} </td>
+                <td> {dog.votes} </td>
               </tr>
             );
           })}
