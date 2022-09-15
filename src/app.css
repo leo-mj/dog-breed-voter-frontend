@@ -1,5 +1,5 @@
 body {
-  margin: 10px;
+  /* margin: 10px; */
   height: 100vh;
   grid-template-areas:
     "top"
@@ -25,8 +25,8 @@ body {
 }
 
 img {
-  width: 500px;
-  height: 350px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   border-radius: 10px;
 }
@@ -54,9 +54,9 @@ h1 {
   text-align: center;
 }
 
-.leaderboard {
+/* .leaderboard {
   margin-right: 50px;
-}
+} */
 
 footer {
   grid-area: bottom;

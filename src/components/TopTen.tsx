@@ -2,29 +2,34 @@ import { useState, useEffect } from "react";
 import { dataBaseURL } from "../utils/dbURL";
 import axios from "axios";
 import { IDataTopTen } from "../utils/interfaces";
-import { Table } from "react-bootstrap";
+import { Row, Table } from "react-bootstrap";
 import { formatName } from "../utils/formatName";
 import "../app.css";
+import io from "socket.io-client";
 
-interface ITopTenProps {
-  votesRegistered: number;
-}
+const socket = io(dataBaseURL);
 
-export function TopTen({ votesRegistered }: ITopTenProps): JSX.Element {
+export function TopTen(): JSX.Element {
   const [topTenBoard, setTopTenBoard] = useState<IDataTopTen[]>([]);
+
   useEffect(() => {
     const getTopTen = async () => {
       const res = await axios.get(`${dataBaseURL}/topTen`);
-      console.log(dataBaseURL, "getting Top Ten");
       const dataTopTen: IDataTopTen[] = res.data;
       setTopTenBoard(dataTopTen);
     };
-
     getTopTen();
-  }, [votesRegistered]);
+    socket.on("messageTosend", (data) => {
+      const x: IDataTopTen[] = data;
+      setTopTenBoard(x);
+    });
+    return () => {
+      socket.off("messageTosend");
+    };
+  }, []);
 
   return (
-    <div className="leaderboard">
+    <Row className="leaderboard">
       <h1>Leaderboard</h1>
       <Table striped bordered hover className="leaderboard-table">
         <thead>
@@ -46,6 +51,6 @@ export function TopTen({ votesRegistered }: ITopTenProps): JSX.Element {
           })}
         </tbody>
       </Table>
-    </div>
+    </Row>
   );
 }
